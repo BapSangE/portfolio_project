@@ -8,7 +8,7 @@
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; }
-  body { background: #1a1a1a; overflow-x: hidden; }
+  body { background: #1a1a1a; overflow-x: hidden; padding-top: 56px; }
   a { color: #eae7e0; text-decoration: none; }
   a:hover { color: #ffffff; }
 
@@ -30,8 +30,19 @@
   nav a:hover { background: rgba(255,255,255,0.12); }
   nav a.active { background: rgba(255,255,255,0.18); color: #ffffff; }
 
-  section { scroll-margin-top: 56px; }
-  section img { display: block; width: 100%; height: auto; }
+  section { scroll-margin-top: 56px; padding: 40px 0; }
+  /* 이미지를 화면 세로 높이에 맞춰 자동 축소, 가로는 비율 유지 */
+  section img {
+    display: block;
+    margin: 0 auto 24px;
+    width: auto;
+    max-width: 100%;
+    max-height: calc(100vh - 96px);
+    height: auto;
+    object-fit: contain;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.4);
+  }
+  section img:last-child { margin-bottom: 0; }
 </style>
 </head>
 <body>
