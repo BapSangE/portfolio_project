@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio</title>
+<meta name="description" content="Portfolio">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { background: #1a1a1a; overflow-x: hidden; }
+  a { color: #eae7e0; text-decoration: none; }
+  a:hover { color: #ffffff; }
+
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; justify-content: center; align-items: center; gap: 4px;
+    padding: 10px 16px; flex-wrap: wrap;
+    background: rgba(26,26,26,0.85); backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  nav a {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 13px; letter-spacing: 0.04em;
+    padding: 8px 14px; border-radius: 999px;
+    transition: background 0.2s, color 0.2s;
+    white-space: nowrap;
+  }
+  nav a:hover { background: rgba(255,255,255,0.12); }
+  nav a.active { background: rgba(255,255,255,0.18); color: #ffffff; }
+
+  section { scroll-margin-top: 56px; }
+  section img { display: block; width: 100%; height: auto; }
+</style>
+</head>
+<body>
+<nav>
+  <a href="#cover">Cover</a>
+  <a href="#resume">Resume</a>
+  <a href="#contents">Contents</a>
+  <a href="#project1">Project 01</a>
+  <a href="#project2">Project 02</a>
+  <a href="#project3">Project 03</a>
+  <a href="#project4">Project 04</a>
+</nav>
+
+<section id="cover">
+  <img src="images/01-cover.png" alt="Cover">
+</section>
+
+<section id="resume">
+  <img src="images/02-resume.png" alt="Resume">
+</section>
+
+<section id="contents">
+  <img src="images/03-contents.png" alt="Contents">
+</section>
+
+<section id="project1">
+  <img src="images/p1-cover.png" alt="Project 01 Cover">
+  <img src="images/p1-01.png" alt="Project 01 - 1">
+  <img src="images/p1-02.png" alt="Project 01 - 2">
+  <img src="images/p1-03.png" alt="Project 01 - 3">
+  <img src="images/p1-04.png" alt="Project 01 - 4">
+  <img src="images/p1-05.png" alt="Project 01 - 5">
+  <img src="images/p1-06.png" alt="Project 01 - 6">
+  <img src="images/p1-07.png" alt="Project 01 - 7">
+  <img src="images/p1-08.png" alt="Project 01 - 8">
+  <img src="images/p1-09.png" alt="Project 01 - 9">
+  <img src="images/p1-10.png" alt="Project 01 - 10">
+</section>
+
+<section id="project2">
+  <img src="images/p2-cover.png" alt="Project 02 Cover">
+  <img src="images/p2-01.png" alt="Project 02 - 1">
+  <img src="images/p2-02.png" alt="Project 02 - 2">
+  <img src="images/p2-03.png" alt="Project 02 - 3">
+  <img src="images/p2-04.png" alt="Project 02 - 4">
+  <img src="images/p2-05.png" alt="Project 02 - 5">
+  <img src="images/p2-06.png" alt="Project 02 - 6">
+</section>
+
+<section id="project3">
+  <img src="images/p3-cover.png" alt="Project 03 Cover">
+  <img src="images/p3-01.png" alt="Project 03 - 1">
+  <img src="images/p3-02.png" alt="Project 03 - 2">
+  <img src="images/p3-03.png" alt="Project 03 - 3">
+  <img src="images/p3-04.png" alt="Project 03 - 4">
+  <img src="images/p3-05.png" alt="Project 03 - 5">
+  <img src="images/p3-06.png" alt="Project 03 - 6">
+  <img src="images/p3-07.png" alt="Project 03 - 7">
+</section>
+
+<section id="project4">
+  <img src="images/p4-cover.png" alt="Project 04 Cover">
+  <img src="images/p4-01.png" alt="Project 04 - 1">
+  <img src="images/p4-02.png" alt="Project 04 - 2">
+  <img src="images/p4-03.png" alt="Project 04 - 3">
+  <img src="images/p4-04.png" alt="Project 04 - 4">
+  <img src="images/p4-05.png" alt="Project 04 - 5">
+  <img src="images/p4-06.png" alt="Project 04 - 6">
+  <img src="images/p4-07.png" alt="Project 04 - 7">
+</section>
+
+<script>
+  // 스크롤 시 현재 섹션 네비 강조
+  const links = Array.from(document.querySelectorAll('nav a'));
+  const map = new Map(links.map(a => [a.getAttribute('href').slice(1), a]));
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        links.forEach(a => a.classList.remove('active'));
+        const link = map.get(e.target.id);
+        if (link) link.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-50% 0px -50% 0px' });
+  document.querySelectorAll('section').forEach(s => obs.observe(s));
+</script>
+</body>
+</html>
